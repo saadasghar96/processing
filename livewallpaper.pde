@@ -10,8 +10,14 @@ float deltaTime = 0;
 float affirmationAlpha = 255;
 boolean isTransitioning = false;
 
-void setup() {
-  size(1080, 2340, P3D);  // Added P3D for proper 3D rotation
+void setup() {  
+   // Ensures P3D renderer and full screen dimensions
+  fullScreen(P3D);
+   
+  // Optional: Adjust pixel density for high-resolution screens
+  pixelDensity(displayDensity());
+  
+  smooth(8);
   
   // Try different system fonts for the best bold appearance
   String[] fontNames = {
@@ -124,7 +130,7 @@ void drawDNA() {
   rotateY(time * 0.3);
   
   // Optimized DNA strands
-  strokeWeight(5);  // Thicker strands
+  strokeWeight(10);  // Thicker strands
   for (int strand = 0; strand < 2; strand++) {
     beginShape();
     noFill();
